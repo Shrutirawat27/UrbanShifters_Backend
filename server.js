@@ -11,10 +11,8 @@ import blogRoutes from './routes/blog.routes.js';
 
 dotenv.config();
 
-// Initialize Express
 const app = express();
 
-// Connect to MongoDB
 connectDB();
 
 // Middleware
