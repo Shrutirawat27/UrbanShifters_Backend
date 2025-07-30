@@ -1,16 +1,14 @@
-// routes/enquiry.routes.js
 import express from 'express';
 import {
   createEnquiry,
-  getAllEnquiries
+  getAllEnquiries,
+  updateEnquiryStatus, // ✅ Import
 } from '../controllers/enquiry.controller.js';
 
 const router = express.Router();
 
-// POST: Public - Enquiry form
 router.post('/', createEnquiry);
-
-// GET: Admin - View all enquiries
 router.get('/', getAllEnquiries);
+router.put('/:enquiryId/status', updateEnquiryStatus); // ✅ Add this route
 
 export default router;
