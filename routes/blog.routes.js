@@ -1,4 +1,3 @@
-// routes/blog.routes.js
 import express from 'express';
 import {
   getAllBlogs,
@@ -9,16 +8,9 @@ import {
 
 const router = express.Router();
 
-// GET all blogs
 router.get('/', getAllBlogs);
-
-// POST a blog
 router.post('/', createBlog);
-
-// PUT update blog
 router.put('/:id', updateBlog);
-
-// DELETE blog
 router.delete('/:id', deleteBlog);
 
 export default router;

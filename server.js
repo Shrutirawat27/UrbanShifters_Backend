@@ -3,11 +3,11 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-
 import connectDB from './config/db.js';
 import reviewRoutes from './routes/review.routes.js';
 import adminRoutes from './routes/admin.routes.js';
-import enquiryRoutes from './routes/enquiry.routes.js'; // you missed this line!
+import enquiryRoutes from './routes/enquiry.routes.js'; 
+import blogRoutes from './routes/blog.routes.js';
 
 dotenv.config();
 
@@ -29,6 +29,7 @@ app.use(cors({
 app.use('/api/enquiries', enquiryRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/blogs', blogRoutes);
 
 // Default route
 app.get('/', (req, res) => {

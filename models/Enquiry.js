@@ -1,4 +1,3 @@
-// models/Enquiry.js
 import mongoose from 'mongoose';
 
 const enquirySchema = new mongoose.Schema({
@@ -9,7 +8,7 @@ const enquirySchema = new mongoose.Schema({
   status: {
     type: String,
     enum: ['pending', 'contacted', 'quoted', 'closed'],
-    default: 'pending', // default status when enquiry is created
+    default: 'pending', 
   },
   date: { type: Date, default: Date.now },
 }, { timestamps: true });

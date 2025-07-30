@@ -1,4 +1,3 @@
-// controllers/admin.controller.js
 import Admin from '../models/admin.model.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -26,7 +25,7 @@ export const adminLogin = async (req, res) => {
   }
 };
 
-// (Optional) Register admin once
+// Register admin once
 export const registerAdmin = async (req, res) => {
   const { username, password } = req.body;
   try {

@@ -22,7 +22,7 @@ export const getAllEnquiries = async (req, res) => {
   }
 };
 
-// ✅ PUT: Update enquiry status
+// PUT: Update enquiry status
 export const updateEnquiryStatus = async (req, res) => {
   try {
     const { enquiryId } = req.params;

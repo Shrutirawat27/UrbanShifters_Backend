@@ -1,4 +1,3 @@
-// controllers/blog.controller.js
 import Blog from '../models/Blog.js';
 
 // GET all blog posts
@@ -14,10 +13,19 @@ export const getAllBlogs = async (req, res) => {
 // POST a new blog post
 export const createBlog = async (req, res) => {
   try {
-    const { title, summary, content, image, category } = req.body;
-    const newBlog = new Blog({ title, summary, content, image, category });
-    await newBlog.save();
-    res.status(201).json(newBlog);
+    const { title, summary, content, image, category, author } = req.body;
+
+    const blog = await Blog.create({
+      title,
+      summary,
+      content,
+      image,
+      category,
+      author: author || 'UrbanShifters Team',
+    });
+
+    const fullBlog = await Blog.findById(blog._id);
+    res.status(201).json(fullBlog);
   } catch (error) {
     res.status(500).json({ message: 'Error creating blog', error });
   }

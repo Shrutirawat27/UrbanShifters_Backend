@@ -1,4 +1,3 @@
-// controllers/services.controller.js
 import Service from '../models/Service.js';
 
 export const getAllServices = async (req, res) => {

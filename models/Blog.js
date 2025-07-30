@@ -1,4 +1,3 @@
-// models/Blog.js
 import mongoose from 'mongoose';
 
 const blogSchema = new mongoose.Schema({
@@ -7,6 +6,7 @@ const blogSchema = new mongoose.Schema({
   content: { type: String, required: true },
   image: { type: String, required: true },
   category: { type: String, default: 'General' },
+  author: { type: String, default: 'UrbanShifters Team' }, 
 }, { timestamps: true });
 
 export default mongoose.model('Blog', blogSchema);
