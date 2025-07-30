@@ -1,4 +1,3 @@
-// controllers/enquiry.controller.js
 import Enquiry from '../models/Enquiry.js';
 
 // POST: Create new enquiry
@@ -20,5 +19,27 @@ export const getAllEnquiries = async (req, res) => {
     res.status(200).json(enquiries);
   } catch (error) {
     res.status(500).json({ message: 'Failed to fetch enquiries', error });
+  }
+};
+
+// ✅ PUT: Update enquiry status
+export const updateEnquiryStatus = async (req, res) => {
+  try {
+    const { enquiryId } = req.params;
+    const { status } = req.body;
+
+    const updatedEnquiry = await Enquiry.findByIdAndUpdate(
+      enquiryId,
+      { status },
+      { new: true }
+    );
+
+    if (!updatedEnquiry) {
+      return res.status(404).json({ message: 'Enquiry not found' });
+    }
+
+    res.status(200).json(updatedEnquiry);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to update status', error });
   }
 };
