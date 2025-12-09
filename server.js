@@ -18,8 +18,20 @@ connectDB();
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
+const allowedOrigins = [
+  'http://localhost:5173', // local frontend
+  'https://urban-shifters.vercel.app', // deployed frontend
+];
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'https://urban-shifters-frontend.vercel.app',
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true); 
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS not allowed from origin: ' + origin));
+    }
+  },
   credentials: true,
 }));
 
